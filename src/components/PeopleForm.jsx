@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 const PeopleForm = ({ kisiler, submitFn }) => {
-  const [isim, setIsim] = useState("");
+  const [isim, setIsim] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (kisiler.includes(isim)) {
-      setError("Bu isim daha önce eklenmiş")
+      setError('Bu isim daha önce eklenmiş');
     } else {
-      setError(null)
+      setError(null);
     }
-  }, [isim, kisiler])
+  }, [isim, kisiler]);
 
   function handleIsimChange(e) {
     setIsim(e.target.value);
@@ -19,19 +19,19 @@ const PeopleForm = ({ kisiler, submitFn }) => {
   function handleSubmit(e) {
     e.preventDefault();
     submitFn(isim);
-    setIsim("");
+    setIsim('');
   }
 
   return (
     <form className="taskForm" onSubmit={handleSubmit}>
       <div className="form-line">
-        <label className="input-label" htmlFor="title">
+        <label className="input-label" htmlFor="name">
           İsim
         </label>
         <input
           className="input-text"
-          id="title"
-          name="title"
+          id="name"
+          name="name"
           type="text"
           onChange={handleIsimChange}
           value={isim}
